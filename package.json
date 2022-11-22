@@ -82,6 +82,7 @@
     "eslint-plugin-prettier": "^3.1.4",
     "eslint-plugin-yaml": "^0.2.0",
     "graphql-let": "^0.16.2",
+    "msw": "^0.49.0",
     "npm-run-all": "~4.1.5",
     "postcss": "^8.4.19",
     "prettier": "^2.1.2",
@@ -109,7 +110,10 @@
     "start:disconnected-proxy": "ts-node --project tsconfig.scripts.json ./scripts/disconnected-mode-proxy.ts",
     "start:production": "npm-run-all --serial bootstrap next:build next:start",
     "start:watch-components": "ts-node --project tsconfig.scripts.json scripts/generate-component-factory.ts --watch",
-    "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "storybook": "start-storybook -p 6006 -s ./public",
+    "build-storybook": "build-storybook -s public"
+  },
+  "msw": {
+    "workerDirectory": "public"
   }
 }

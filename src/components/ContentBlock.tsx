@@ -5,6 +5,7 @@ import styles from './ContentBlock.module.scss';
 import ScLogo from 'assets/images/sitecore_logo.svg';
 
 type ContentBlockProps = ComponentProps & {
+  name: string;
   fields: {
     heading: Field<string>;
     content: Field<string>;
@@ -16,11 +17,12 @@ type ContentBlockProps = ComponentProps & {
  * This is the most basic building block of a content site, and the most basic
  * JSS component that's useful.
  */
-const ContentBlock = ({ fields }: ContentBlockProps): JSX.Element => {
+const ContentBlock = ({ fields, name }: ContentBlockProps): JSX.Element => {
   return (
     <div className="contentBlock">
       <div className={styles.name}>Steven</div>
       <div className="text-3xl font-bold underline">Hello world!</div>
+      <div>Get name: {name}</div>
       <div>
         <a
           href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
@@ -40,3 +42,17 @@ const ContentBlock = ({ fields }: ContentBlockProps): JSX.Element => {
 
 // export default withDatasourceCheck()<ContentBlockProps>(ContentBlock);
 export default ContentBlock;
+
+export async function getServerSideProps() {
+  const res = await fetch('http://localhost:3000/api/hello');
+  const data = await res.json();
+  if (!data) {
+    return {
+      notFound: true,
+    };
+  }
+  // return {
+  //   props: data,
+  // };
+  return data;
+}
