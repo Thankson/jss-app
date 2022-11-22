@@ -16,12 +16,14 @@ type ContentBlockProps = ComponentProps & {
  */
 const ContentBlock = ({ fields }: ContentBlockProps): JSX.Element => {
   return (
-  <div className="contentBlock">
-    <div className={styles.name}>Steven</div>
-    <Text tag="h2" className="contentTitle" field={fields.heading} />
-    <RichText className="contentDescription" field={fields.content} />
-  </div>
-)};
+    <div className="contentBlock">
+      <div className={styles.name}>Steven</div>
+      <div className="text-3xl font-bold underline">Hello world!</div>
+      <Text tag="h2" className="contentTitle" field={fields.heading} />
+      <RichText className="contentDescription" field={fields.content} />
+    </div>
+  );
+};
 
 // export default withDatasourceCheck()<ContentBlockProps>(ContentBlock);
 export default ContentBlock;
