@@ -14,12 +14,14 @@ type ContentBlockProps = ComponentProps & {
  * This is the most basic building block of a content site, and the most basic
  * JSS component that's useful.
  */
-const ContentBlock = ({ fields }: ContentBlockProps): JSX.Element => (
+const ContentBlock = ({ fields }: ContentBlockProps): JSX.Element => {
+  return (
   <div className="contentBlock">
     <div className={styles.name}>Steven</div>
     <Text tag="h2" className="contentTitle" field={fields.heading} />
     <RichText className="contentDescription" field={fields.content} />
   </div>
-);
+)};
 
-export default withDatasourceCheck()<ContentBlockProps>(ContentBlock);
+// export default withDatasourceCheck()<ContentBlockProps>(ContentBlock);
+export default ContentBlock;
