@@ -13,11 +13,10 @@ export default {
     type: {
       // 字段名为type
       description: '类型', // 属性描述
-      defaultValue: 'default', //开发环境默认值
       control: {
         type: 'select', //文档控制器类型text(文本),select（选择）... 根据实际情况定义
-        options: ['default', 'primary', 'success', 'warning', 'danger', 'text'], //选项内容
       },
+      options: ['default', 'primary', 'success', 'warning', 'danger', 'text'], //选项内容
       table: {
         category: 'Button', //定义描述分类，可多个组件联合开发区分使用
         type: { summary: 'default | primary  | success | warning | danger | text' }, // 字段属性类型重写

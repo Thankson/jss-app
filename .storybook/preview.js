@@ -20,7 +20,16 @@ if (typeof global.process === "undefined") { // make sure that is not a node pro
       return res(ctx.json({name: "Steven Zeng"}));
     })
   );
-  worker.start();
+  worker.start({
+    // [MSW logging warnings for unhandled Supertest requests](https://stackoverflow.com/questions/68024935/msw-logging-warnings-for-unhandled-supertest-requests)
+    onUnhandledRequest: 'bypass',
+    // onUnhandledRequest: ({ headers }, print) => {
+    //   if (headers.get("User-Agent") === "supertest") {
+    //     return;
+    //   }
+    //   print.error();
+    // },
+  });
 }
 
 // [Deprecated configure](https://github.com/storybookjs/storybook/blob/next/MIGRATION.md#deprecated-configure)
